@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="debug"><source path="F:\as_space\News\indicator\build\intermediates\bundles\debug\assets"/></dataSet><dataSet config="main"><source path="F:\as_space\News\indicator\src\androidTest\assets"/><source path="F:\as_space\News\indicator\build\generated\assets\shaders\androidTest\debug"/></dataSet></merger>
