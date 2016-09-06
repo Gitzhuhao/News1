@@ -25,6 +25,7 @@ import zhuhao.news.entity.NewsEase;
  * Created by Administrator on 2016/8/31 0031.
  */
 public class NewsListFragment extends BaseFragment {
+
     private String tid;
     @BindView(R.id.recyclerView1)
     RecyclerView recyclerView1;
@@ -74,13 +75,14 @@ public class NewsListFragment extends BaseFragment {
             tid = bundle.getString("tid");
             //组合成url显示
             lazyLoad();
+
         }
     }
 
     @Override
     protected String getRealURL() {
         String url = "http://c.m.163.com/nc/article/list/" + tid + "/0-20.html";
-        Toast.makeText(NewsListFragment.this.getContext(), "tid:" + tid, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(NewsListFragment.this.getContext(), "tid:" + tid, Toast.LENGTH_SHORT).show();
         return url;
     }
 
@@ -104,6 +106,7 @@ public class NewsListFragment extends BaseFragment {
         //                recyclerView1.addItemDecoration(new MyDecoration());
         recyclerView1.setLayoutManager(layoutManager);
         isCompleted = true;
+
     }
 
     public static NewsListFragment getInstance(Bundle bundle) {
@@ -117,5 +120,8 @@ public class NewsListFragment extends BaseFragment {
     @Override
     protected int getRealLayout() {
         return R.layout.layout_newslist;
+
     }
+
+
 }

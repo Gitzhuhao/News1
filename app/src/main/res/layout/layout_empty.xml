@@ -3,11 +3,5 @@
 
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerVertical="true"
-    android:layout_centerHorizontal="true"
-    android:paddingLeft="30dp"
-    android:text="该状态为空，请从新确认网络是否连接！！！"/>
+
 </RelativeLayout>

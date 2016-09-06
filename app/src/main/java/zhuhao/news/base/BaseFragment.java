@@ -43,6 +43,7 @@ public abstract class BaseFragment extends Fragment {
                 @Override
                 protected void bindView(View successView) {
                     ButterKnife.bind(BaseFragment.this, successView);
+
                     initData();
                 }
 

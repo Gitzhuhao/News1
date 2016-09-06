@@ -24,7 +24,7 @@ public abstract class LoadingPage extends FrameLayout {
     public static final int STAT_EMPTY = 2;
     public static final int STAT_SUCCESS = 3;
 
-    private int currentState = 0;//当前状态
+    private int currentState;//当前状态
 
     private View loadingView;
     private View errorView;
@@ -59,8 +59,8 @@ public abstract class LoadingPage extends FrameLayout {
     }
 
 
-
     public void startNetWork() {
+
         String url = getUrl();
         if (url == null) {
             currentState = STAT_SUCCESS;
@@ -75,6 +75,8 @@ public abstract class LoadingPage extends FrameLayout {
                     } else {
                         currentState = STAT_SUCCESS;
                         parseData(result);
+                        //                        Toast.makeText(getContext(), "数据解析完毕", Toast.LENGTH_SHORT).show();
+
                     }
                     showPage();
                 }
@@ -95,7 +97,9 @@ public abstract class LoadingPage extends FrameLayout {
             });
         }
     }
+
     private void showPage() {
+
         GlobalApplication.handler.post(new Runnable() {
             @Override
             public void run() {
@@ -107,11 +111,13 @@ public abstract class LoadingPage extends FrameLayout {
                     addView(successView);
                     //碎片中绑定id
                     bindView(successView);
+                    currentState = STAT_SUCCESS;
                 }
                 successView.setVisibility(currentState == STAT_SUCCESS ? View.VISIBLE : View.INVISIBLE);
             }
         });
     }
+
     protected abstract void parseData(String result);
 
     protected abstract String getUrl();
