@@ -25,6 +25,10 @@
             android:name=".NewsActivity"
             android:theme="@style/MyIndicatorColor">
         </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:theme="@style/AppThemeNoActionbar">
+        </activity>
     </application>
 
 </manifest>

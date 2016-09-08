@@ -58,7 +58,6 @@ public abstract class LoadingPage extends FrameLayout {
 
     }
 
-
     public void startNetWork() {
 
         String url = getUrl();

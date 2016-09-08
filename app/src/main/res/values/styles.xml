@@ -36,9 +36,12 @@
     <!-- Base application theme. -->
     <style parent="Theme.AppCompat.Light.NoActionBar" name="MyIndicatorColor">
         <item name="vpiTabPageIndicatorStyle">@style/MyWidget.TabPageIndicator</item>
-        <item name="android:animationDuration">5000</item>
+        <item name="android:animationDuration">3000</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+
+
     <style parent="Widget" name="MyWidget.TabPageIndicator">
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/vpi__tab_indicator</item>
@@ -50,6 +53,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:maxLines">1</item>
     </style>
+
 
     <style parent="Widget" name="MyTextAppearance.TabPageIndicator">
         <!-- 设置文本字体加粗 -->

@@ -1,6 +1,7 @@
 package zhuhao.news;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import zhuhao.news.adapter.NewsRecycleAdapter;
 import zhuhao.news.base.BaseFragment;
 import zhuhao.news.fragments.FavorFragment;
 import zhuhao.news.fragments.HotFragment;
@@ -101,6 +103,14 @@ public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFr
 
     @Override
     public void onFragmentInteraction(int viewId, Bundle bundle) {
+        switch (viewId) {
+            case NewsRecycleAdapter.RECYCLER_ITEM:
+                //跳转activity，传值过去
+                Intent intent = new Intent(NewsActivity.this, WebViewActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
 
+                break;
+        }
     }
 }

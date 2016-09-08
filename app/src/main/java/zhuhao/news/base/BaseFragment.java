@@ -77,7 +77,6 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
         if (rootView != null) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
-
             parent.removeView(rootView);
         }
     }

@@ -22,6 +22,7 @@ import zhuhao.news.utils.XImageUtil;
 
 
 public class NewsRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public static final int RECYCLER_ITEM = 0;
 
     private List<NewsEase> list;
 
@@ -29,6 +30,10 @@ public class NewsRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.list = list;
         this.context = context;
     }
+    public NewsRecycleAdapter(Context context) {
+        this.context = context;
+    }
+
 
     private Context context;
     public static final int VIEW_TYPE_VP = 0;
@@ -55,6 +60,23 @@ public class NewsRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return null;
     }
 
+    public void addData(List<NewsEase> l) {
+        if (l == null)
+            return;
+        if (list == null) {
+            setList(l);
+            return;
+        }
+        list.addAll(l);
+    }
+
+    public void setList(List<NewsEase> list) {
+        this.list = list;
+    }
+    public List<NewsEase> getList() {
+        return list;
+    }
+
     @Override
     public int getItemViewType(int position) {
         NewsEase newsEase = list.get(position);
@@ -76,7 +98,8 @@ public class NewsRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+
         NewsEase east = list.get(position);
         String title = null;
         String t1 = east.title;
@@ -113,7 +136,32 @@ public class NewsRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             //            h.vpager.setCurrentItem(Integer.MAX_VALUE / 2);
 
         }
+
+        //点击事件：网址：
+        String url = list.get(position).url;
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                onItemClickListener.itemClick(RECYCLER_ITEM, position);
+            }
+        });
+
+
     }
+
+    //使用接口把当前位置position传入NewslistFragment
+
+    private OnItemClickListener onItemClickListener;
+
+    public interface OnItemClickListener {
+        void itemClick(int viewId, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
 
     @Override
     public int getItemCount() {
