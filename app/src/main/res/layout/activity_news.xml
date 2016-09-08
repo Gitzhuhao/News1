@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/radio_group_bg"
     android:orientation="vertical"
     tools:context="zhuhao.news.NewsActivity">
 
     <ImageView
         android:id="@+id/iv_title"
         android:layout_width="match_parent"
-        android:background="@drawable/title_bg"
-        android:layout_height="@dimen/layout_news_title"/>
+        android:layout_height="@dimen/layout_news_title"
+
+        android:background="@drawable/title_bg"/>
 
     <FrameLayout
         android:id="@+id/main_content"
@@ -24,36 +26,39 @@
         android:id="@+id/radiogroup1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/radio_group_bg"
         android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
+        android:paddingBottom="1dp"
+        android:paddingTop="2dp">
 
         <RadioButton
             android:id="@+id/radioButton1"
             style="@style/radiobtnSytle"
             android:checked="true"
             android:drawableTop="@drawable/home_selector"
-            android:text="@string/main_tab1"/>
+            android:text="@string/main_tab1"
+            android:textSize="@dimen/radio_textsize"/>
 
         <RadioButton
             android:id="@+id/radioButton2"
             style="@style/radiobtnSytle"
             android:drawableTop="@drawable/smartservice_selector"
-            android:text="@string/main_tab2"/>
+            android:text="@string/main_tab2"
+            android:textSize="@dimen/radio_textsize"/>
 
         <RadioButton
             android:id="@+id/radioButton3"
 
             style="@style/radiobtnSytle"
             android:drawableTop="@drawable/setting_selector"
-            android:text="@string/main_tab3"/>
+            android:text="@string/main_tab3"
+            android:textSize="@dimen/radio_textsize"/>
 
         <RadioButton
             android:id="@+id/radioButton4"
             style="@style/radiobtnSytle"
             android:drawableTop="@drawable/gov_selector"
-            android:text="@string/main_tab4"/>
+            android:text="@string/main_tab4"
+            android:textSize="@dimen/radio_textsize"/>
 
 
     </RadioGroup>
