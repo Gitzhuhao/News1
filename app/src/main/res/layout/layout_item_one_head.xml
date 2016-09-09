@@ -20,6 +20,6 @@
         android:textColor="@android:color/white"
         android:text="大字标题"
         android:background="#8000"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 </RelativeLayout>

@@ -100,7 +100,6 @@ public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFr
 
     }
 
-
     @Override
     public void onFragmentInteraction(int viewId, Bundle bundle) {
         switch (viewId) {
@@ -109,7 +108,6 @@ public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFr
                 Intent intent = new Intent(NewsActivity.this, WebViewActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
-
                 break;
         }
     }

@@ -16,6 +16,7 @@ public class NewsEase {
     public String postid;
     public int replyCount;
     public String url;
+    public String docid;
     public List<Image> imgextra;
     public List<AD> ads;
 

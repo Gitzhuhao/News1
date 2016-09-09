@@ -13,16 +13,23 @@ import zhuhao.news.view.LoadingPage;
 
 
 public abstract class BaseFragment extends Fragment {
-    public BaseFragment(View rootView) {
-        this.rootView = rootView;
-    }
-
-    protected OnFragmentInteractionListener mListener;
     protected View rootView;
     private LoadingPage loadingPage;
 
     public BaseFragment() {
     }
+
+    public BaseFragment(View rootView) {
+        this.rootView = rootView;
+    }
+
+    protected OnFragmentInteractionListener mListener;
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(int viewId, Bundle bundle);
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,19 +64,11 @@ public abstract class BaseFragment extends Fragment {
 
         return rootView;
     }
-    //初始化界面
-    protected abstract void initData();
 
-    protected abstract String getRealURL();
-
-    protected abstract void parseRealData(String result);
-
-    protected abstract int getRealLayout();
-
-    public void showSuccessPage() {
+    public void showSuccessPage(String url) {
+        loadingPage.setUrl(url);
         loadingPage.startNetWork();
     }
-
 
 
     @Override
@@ -77,6 +76,7 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
         if (rootView != null) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
+            //            Toast.makeText(BaseFragment.this.getContext(), "移除rootView", Toast.LENGTH_SHORT).show();
             parent.removeView(rootView);
         }
     }
@@ -101,7 +101,12 @@ public abstract class BaseFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(int viewId, Bundle bundle);
-    }
+    //初始化界面
+    protected abstract void initData();
+
+    protected abstract String getRealURL();
+
+    protected abstract void parseRealData(String result);
+
+    protected abstract int getRealLayout();
 }

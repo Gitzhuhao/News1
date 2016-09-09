@@ -14,9 +14,14 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import zhuhao.news.entity.NetEaseType;
+import zhuhao.news.utils.CommonUrls;
+import zhuhao.news.utils.IgnoreTypes;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         intent = new Intent(MainActivity.this, NewsActivity.class);
         Animation animation = AnimationUtils.loadAnimation(this,
-                 R.anim.set_1);
+                R.anim.set_1);
         ivLogo.startAnimation(animation);
         getList();
     }
 
     private void getList() {
         final long time = System.currentTimeMillis();
-        String url = "http://c.m.163.com/nc/topicset/android/subscribe/manage/listspecial.html";
+        String url = CommonUrls.getCommonUrls().getNewsType();
 
         RequestParams entity = new RequestParams(url);
 
@@ -66,19 +71,32 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinished() {
-//                long endTime = System.currentTimeMillis();
-//                if ((endTime - time) < 1500) {
-//                    try {
-//                        Thread.sleep(2000 - (endTime - time));
-//                    } catch (Exception e) {
-//                    }
-//                }
-
+                long endTime = System.currentTimeMillis();
+                if ((endTime - time) < 1500) {
+                    try {
+                        Thread.sleep(1500 - (endTime - time));
+                    } catch (Exception e) {
+                    }
+                }
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
+    }
+
+    //忽略没有数据的空数据
+    private void ignore(NetEaseType netEaseType) {
+        List<NetEaseType.TList> tobeDeleted = new ArrayList<>();
+        for (int i = 0; i < IgnoreTypes.TYPES.length; i++) {
+            for (int j = 0; j < netEaseType.gettList().size(); j++) {
+                if (IgnoreTypes.TYPES[i].equals(netEaseType.gettList().get(j).getTname())) {
+                    tobeDeleted.add(netEaseType.gettList().get(j));
+                }
+            }
+
+        }
+        netEaseType.gettList().removeAll(tobeDeleted);
     }
 }

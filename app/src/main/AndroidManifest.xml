@@ -29,6 +29,10 @@
             android:name=".WebViewActivity"
             android:theme="@style/AppThemeNoActionbar">
         </activity>
+        <activity
+            android:name=".view.Main2Activity"
+            android:theme="@style/AppThemeNoActionbar">
+        </activity>
     </application>
 
 </manifest>

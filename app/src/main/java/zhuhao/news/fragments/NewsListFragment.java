@@ -20,6 +20,7 @@ import zhuhao.news.R;
 import zhuhao.news.adapter.NewsRecycleAdapter;
 import zhuhao.news.base.BaseFragment;
 import zhuhao.news.entity.NewsEase;
+import zhuhao.news.utils.CommonUrls;
 import zhuhao.news.view.RecycleViewDivider;
 
 /**
@@ -36,7 +37,7 @@ public class NewsListFragment extends BaseFragment {
     private boolean isVisible;//是否可见
     private boolean isCompleted;//是否已经加载完成。
     private List<NewsEase> newslist;
-
+    private NewsEase tempEase;
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {//frahment从不可见到完全可见的时候，会调用该方法
@@ -65,7 +66,7 @@ public class NewsListFragment extends BaseFragment {
     private void lazyLoad() {
         if (!isPrepared || !isVisible || isCompleted)
             return;
-        showSuccessPage();
+        showSuccessPage(getRealURL());
     }
 
 
@@ -73,15 +74,20 @@ public class NewsListFragment extends BaseFragment {
         @Override
         public void itemClick(int viewId, int position) {
             if (viewId == NewsRecycleAdapter.RECYCLER_ITEM) {
-                String url = adapter.getList().get(position).url;
-                if (url != null) {
-                    //交给activity,viewid,bundle
-                    Bundle bundle = new Bundle();
-                    bundle.putString("url", url);
-                    mListener.onFragmentInteraction(viewId, bundle);
-                } else {
-                    Toast.makeText(NewsListFragment.this.getContext(), "没有网址", Toast.LENGTH_SHORT).show();
-                }
+                //                String url = adapter.getList().get(position).url;
+                //                if (url != null) {
+                //                    if (url.equals("null")) {
+                String docid = adapter.getList().get(position).docid;
+                String url = CommonUrls.getCommonUrls().getFullUrl(docid);
+                //                    }
+                //交给activity,viewid,bundle
+                Bundle bundle = new Bundle();
+                bundle.putString("url", url);
+                bundle.putString("docid", docid);
+                mListener.onFragmentInteraction(viewId, bundle);
+                //                } else {
+                //                    Toast.makeText(NewsListFragment.this.getContext(), "没有网址", Toast.LENGTH_SHORT).show();
+                //                }
             }
         }
     };
@@ -95,6 +101,11 @@ public class NewsListFragment extends BaseFragment {
         recyclerView1.setLayoutManager(layoutManager);
         recyclerView1.setAdapter(adapter);
         recyclerView1.addItemDecoration(new RecycleViewDivider(getContext(), LinearLayoutManager.HORIZONTAL));
+
+
+
+
+
         Bundle bundle = getArguments();
         if (bundle != null) {
             tid = bundle.getString("tid");
@@ -106,11 +117,10 @@ public class NewsListFragment extends BaseFragment {
 
     @Override
     protected String getRealURL() {
-        String url = "http://c.m.163.com/nc/article/list/" + tid + "/0-20.html";
+        String url = CommonUrls.getCommonUrls().getListUrl(tid);
         //        Toast.makeText(NewsListFragment.this.getContext(), "tid:" + tid, Toast.LENGTH_SHORT).show();
         return url;
     }
-
     @Override
     protected void parseRealData(String result) {
         String tname = getArguments().getString("tname");
@@ -120,9 +130,13 @@ public class NewsListFragment extends BaseFragment {
             JSONArray jsonArray = new JSONObject(result).getJSONArray(tid);
             for (int i = 0; i < jsonArray.length(); i++) {
                 NewsEase newsEase = new Gson().fromJson(jsonArray.getString(i), NewsEase.class);
+                if (i == 0) {
+                    tempEase = newsEase;
+                }
+                if (newsEase.url == null || newsEase.url.equals("null"))
+                    continue;
                 newslist.add(newsEase);
             }
-
         } catch (JSONException e) {
             Toast.makeText(NewsListFragment.this.getContext(), "吐司失败", Toast.LENGTH_SHORT).show();
         }

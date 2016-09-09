@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
     <ImageView
         android:id="@+id/img_left"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@mipmap/loading" />
+        android:layout_width="@dimen/one_iv_width"
+        android:layout_height="@dimen/one_iv_height"
+        android:layout_margin="@dimen/one_iv_padding"
+        android:src="@mipmap/loading"/>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/img_left"
-        android:textSize="14sp"
-        android:textColor="#2B2B2B"
-        android:text="大字标题" />
+        android:text="大字标题"
+        android:textColor="@color/fontcolor_normal"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tv_follow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="最新跟帖"
+        android:layout_alignBottom="@+id/img_left"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/img_left"
-        android:layout_alignBottom="@+id/img_left"
         android:gravity="right"
-        android:textSize="12sp"
-        android:textColor="@color/fontcolor_checked" />
+        android:text="最新跟帖"
+       android:layout_marginRight="@dimen/one_iv_padding"
+        android:textColor="@color/fontcolor_checked"
+        android:textSize="@dimen/textsize_folowing"/>
 
 </RelativeLayout>

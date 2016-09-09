@@ -5,7 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_name">News</string>
     <string name="main_tab1">首页</string>
-    <string name="main_tab2">搜索</string>
+    <string name="main_tab2">收藏</string>
     <string name="main_tab3">设置</string>
     <string name="main_tab4">我</string>
     <string name="loading">正在玩命的加载中。。。</string>

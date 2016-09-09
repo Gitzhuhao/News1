@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/layout_news_title"
+        android:background="@color/fontcolor_normal"
+        android:padding="@dimen/one_iv_padding"
+        >
+
+        <Button
+            android:id="@+id/btn_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论"
+            android:textSize="@dimen/textsize_folowing"/>
+
+        <Button
+            android:id="@+id/btn_favor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_comment"
+            android:textSize="@dimen/textsize_folowing"
+            android:text="收藏"/>
+
+        <Button
+            android:id="@+id/btn_share"
+            android:textSize="@dimen/textsize_folowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_favor"
+            android:text="分享"/>
+    </RelativeLayout>
+</RelativeLayout>

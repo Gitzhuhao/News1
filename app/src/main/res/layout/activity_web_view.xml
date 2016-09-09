@@ -6,12 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="zhuhao.news.WebViewActivity">
-    <ImageView
-        android:id="@+id/iv_title"
-        android:layout_width="match_parent"
-        android:background="@drawable/title_bg"
-        android:layout_height="@dimen/layout_news_title"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_title"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="@dimen/layout_news_title"
+            android:layout_height="@dimen/layout_news_title"
+            android:clickable="true"
+            android:scaleType="center"
+            android:src="@drawable/return_selector"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="@dimen/text_title_width"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="默认标题"
+            android:textColor="@color/default_circle_indicator_fill_color"
+            android:textSize="@dimen/activity_horizontal_margin"/>
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="@dimen/layout_news_title"
+            android:layout_height="@dimen/layout_news_title"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:scaleType="center"
+            android:src="@drawable/share_selector"/>
+    </RelativeLayout>
 
     <WebView
         android:id="@+id/webview1"

@@ -30,6 +30,7 @@ public abstract class LoadingPage extends FrameLayout {
     private View errorView;
     private View emptyView;
     private View successView;
+    private String url;
 
     public LoadingPage(Context context) {
         super(context);
@@ -58,9 +59,12 @@ public abstract class LoadingPage extends FrameLayout {
 
     }
 
-    public void startNetWork() {
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-        String url = getUrl();
+    public void startNetWork() {
+        url = getUrl();
         if (url == null) {
             currentState = STAT_SUCCESS;
             showPage();
@@ -79,6 +83,7 @@ public abstract class LoadingPage extends FrameLayout {
                     }
                     showPage();
                 }
+
 
                 @Override
                 public void onError(Throwable ex, boolean isOnCallback) {

@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="fontcolor_normal">#9B9B9B</color>
-    <color name="fontcolor_checked">#32C125</color>
+    <color name="fontcolor_checked">#471DFF</color>
     <color name="radio_group_bg">#EEEEEE</color>
 </resources>
