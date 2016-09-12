@@ -30,9 +30,6 @@ public class NewsTypeAdapter extends FragmentPagerAdapter {
         return titleList == null ? "未命名" : titleList.get(position).getTname();
     }
 
-
-
-
     @Override
     public Fragment getItem(int position) {
         //tid:传进framgment

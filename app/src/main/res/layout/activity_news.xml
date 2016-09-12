@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/radio_group_bg"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
     tools:context="zhuhao.news.NewsActivity">
 
@@ -12,15 +13,33 @@
         android:id="@+id/iv_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_news_title"
-
         android:background="@drawable/title_bg"/>
 
-    <FrameLayout
-        android:id="@+id/main_content"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-    </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_type"
+            android:layout_width="@dimen/activity_width"
+            android:layout_height="@dimen/activity_width"
+            android:layout_alignParentRight="true"
+            android:background="@color/radio_group_bg"
+            android:clickable="true"
+            android:visibility="visible"
+            android:padding="@dimen/one_iv_padding"
+            android:src="@drawable/arrows_selector"/>
+
+
+    </RelativeLayout>
+
 
     <RadioGroup
         android:id="@+id/radiogroup1"

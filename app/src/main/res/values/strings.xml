@@ -9,4 +9,8 @@
     <string name="main_tab3">设置</string>
     <string name="main_tab4">我</string>
     <string name="loading">正在玩命的加载中。。。</string>
+    <string name="login_iv1">阅读</string>
+    <string name="login_iv2">收藏</string>
+    <string name="login_iv3">跟帖</string>
+    <string name="login_iv4">金币</string>
 </resources>

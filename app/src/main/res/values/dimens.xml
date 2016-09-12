@@ -11,4 +11,6 @@
     <dimen name="layout_title_h">40dp</dimen>
     <dimen name="layout_title">40dp</dimen>
     <dimen name="text_title_width">250dp</dimen>
+    <dimen name="activity_width">25dp</dimen>
+    <dimen name="list_file">20dp</dimen>
 </resources>

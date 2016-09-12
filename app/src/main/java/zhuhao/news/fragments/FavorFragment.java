@@ -13,7 +13,7 @@ public class FavorFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-//        tvTitle.setText("我");
+        showSuccessPage(null);
     }
 
     @Override
@@ -28,6 +28,6 @@ public class FavorFragment extends BaseFragment {
 
     @Override
     protected int getRealLayout() {
-        return R.layout.layout_news;
+        return R.layout.layout_favor;
     }
 }

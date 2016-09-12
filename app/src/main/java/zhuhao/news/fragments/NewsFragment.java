@@ -3,15 +3,12 @@ package zhuhao.news.fragments;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.viewpagerindicator.TabPageIndicator;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import zhuhao.news.R;
 import zhuhao.news.adapter.NewsTypeAdapter;
 import zhuhao.news.base.BaseFragment;
@@ -28,8 +25,8 @@ public class NewsFragment extends BaseFragment {
     @BindView(R.id.pager)
     ViewPager pager;
     NewsTypeAdapter adapter;
-    @BindView(R.id.iv_type)
-    ImageView mIvType;
+    private ArrayList<NetEaseType.TList> list;
+    private Bundle bundle;
 
     //新闻首页
     //viewpager
@@ -43,9 +40,9 @@ public class NewsFragment extends BaseFragment {
         //        tvTitle.setText("首页");
         //  getList();
         showSuccessPage(null);
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         if (bundle != null) {
-            ArrayList<NetEaseType.TList> list = (ArrayList<NetEaseType.TList>) bundle.getSerializable("list");
+            list = (ArrayList<NetEaseType.TList>) bundle.getSerializable("list");
             adapter = new NewsTypeAdapter(getFragmentManager(), list);
             pager.setAdapter(adapter);
             indicator.setViewPager(pager);
@@ -78,13 +75,5 @@ public class NewsFragment extends BaseFragment {
         return nf;
     }
 
-    //设置对标题栏目的转换
-    @OnClick(R.id.iv_type)
-    public void onClick() {
-        Toast.makeText(getContext(), "列表显示分类", Toast.LENGTH_SHORT).show();
 
-
-
-
-    }
 }

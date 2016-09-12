@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_visible"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/radio_group_bg"
+              android:orientation="vertical"
+              android:visibility="invisible">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/one_iv_padding"
+            android:text="切换栏目"
+            android:textSize="@dimen/activity_vertical_margin"
+            />
+
+        <ImageView
+            android:id="@+id/iv_type2"
+            android:layout_width="@dimen/activity_width"
+            android:layout_height="@dimen/activity_width"
+            android:layout_alignParentRight="true"
+            android:background="@color/radio_group_bg"
+            android:clickable="true"
+            android:padding="@dimen/one_iv_padding"
+            android:src="@drawable/arrows_selector2"/>
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#0000"
+        android:listSelector="#0000"
+        android:numColumns="4">
+    </GridView>
+
+
+</LinearLayout>

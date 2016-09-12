@@ -15,7 +15,8 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-//        tvTitle.setText("设置");
+        showSuccessPage(null);
+
     }
 
     @Override
@@ -30,6 +31,6 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     protected int getRealLayout() {
-        return R.layout.layout_news;
+        return R.layout.layout_login;
     }
 }

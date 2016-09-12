@@ -117,7 +117,6 @@ public class NewsRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         } else if (holder instanceof HeadPicHolder) {
             HeadPicHolder h = (HeadPicHolder) holder;
             XImageUtil.display(h.imgHead, east.imgsrc);
-
             h.tvTitle.setText(title);
 
 

@@ -6,19 +6,24 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import zhuhao.news.adapter.NewsRecycleAdapter;
 import zhuhao.news.base.BaseFragment;
 import zhuhao.news.fragments.FavorFragment;
 import zhuhao.news.fragments.HotFragment;
 import zhuhao.news.fragments.LoginFragment;
 import zhuhao.news.fragments.NewsFragment;
+import zhuhao.news.fragments.TitleTypeFragment;
 
 public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFragmentInteractionListener, RadioGroup.OnCheckedChangeListener {
 
@@ -28,8 +33,13 @@ public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFr
     RadioGroup radiogroup1;
     FavorFragment ff;
     HotFragment hf;
+    TitleTypeFragment tf;
     LoginFragment lf;
     NewsFragment nf;
+    @BindView(R.id.iv_type)
+    ImageView mIvType;
+    @BindView(R.id.iv_title)
+    ImageView mIvTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,7 @@ public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFr
         ff = new FavorFragment();
         hf = new HotFragment();
         lf = new LoginFragment();
+        tf = new TitleTypeFragment();
         nf = NewsFragment.getInstance(getIntent().getExtras());
         addFragment(nf);
         setListeners();
@@ -60,12 +71,18 @@ public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFr
                 showFragment(nf);
                 break;
             case R.id.radioButton2:
+//                mIvTitle.setVisibility(View.GONE);
+                mIvType.setVisibility(View.INVISIBLE);
                 showFragment(hf);
                 break;
             case R.id.radioButton3:
+//                mIvTitle.setVisibility(View.GONE);
+                mIvType.setVisibility(View.INVISIBLE);
                 showFragment(ff);
                 break;
             case R.id.radioButton4:
+                mIvTitle.setVisibility(View.GONE);
+                mIvType.setVisibility(View.INVISIBLE);
                 showFragment(lf);
                 break;
         }
@@ -110,5 +127,13 @@ public class NewsActivity extends AppCompatActivity implements BaseFragment.OnFr
                 startActivity(intent);
                 break;
         }
+    }
+
+    //设置对标题栏目的转换
+    @OnClick(R.id.iv_type)
+    public void onClick() {
+        Toast.makeText(this, "列表显示分类", Toast.LENGTH_SHORT).show();
+        showFragment(tf);
+        mIvType.setVisibility(View.INVISIBLE);
     }
 }

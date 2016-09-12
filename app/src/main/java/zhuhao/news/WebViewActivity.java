@@ -164,17 +164,18 @@ public class WebViewActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_left:
-                Toast.makeText(this, "返回activity", Toast.LENGTH_SHORT).show();
+                finish();
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
-
             case R.id.iv_right:
-                Toast.makeText(this, "收藏，分享", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "收藏，分享", Toast.LENGTH_SHORT).show();
                 View view1 = View.inflate(this, R.layout.layout_popupwindow, null);
                 if (pop == null) {
                     pop = new PopupWindow(view1, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-                    view1.findViewById(R.id.btn_comment).setOnClickListener(popListener);
-                    view1.findViewById(R.id.btn_favor).setOnClickListener(popListener);
-                    view1.findViewById(R.id.btn_share).setOnClickListener(popListener);
+                    view1.findViewById(R.id.tv_share).setOnClickListener(popListener);
+                    view1.findViewById(R.id.tv_favor).setOnClickListener(popListener);
+                    view1.findViewById(R.id.tv_download).setOnClickListener(popListener);
+                    view1.findViewById(R.id.tv_report).setOnClickListener(popListener);
                     pop.setTouchable(true);
                     pop.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 }
@@ -187,14 +188,22 @@ public class WebViewActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btn_comment:
-                    Toast.makeText(WebViewActivity.this, "评论", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.btn_favor:
-                    Toast.makeText(WebViewActivity.this, "收藏", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.btn_share:
+                case R.id.tv_share:
                     shareNews();
+                    break;
+                case R.id.tv_favor:
+                    Toast.makeText(WebViewActivity.this, "收藏", Toast.LENGTH_SHORT).show();
+
+
+                    break;
+                case R.id.tv_download:
+                    Toast.makeText(WebViewActivity.this, "下载", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case R.id.tv_report:
+                    Toast.makeText(WebViewActivity.this, "我要举报", Toast.LENGTH_SHORT).show();
+
+
                     break;
             }
             pop.dismiss();

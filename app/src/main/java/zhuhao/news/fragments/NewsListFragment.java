@@ -101,11 +101,6 @@ public class NewsListFragment extends BaseFragment {
         recyclerView1.setLayoutManager(layoutManager);
         recyclerView1.setAdapter(adapter);
         recyclerView1.addItemDecoration(new RecycleViewDivider(getContext(), LinearLayoutManager.HORIZONTAL));
-
-
-
-
-
         Bundle bundle = getArguments();
         if (bundle != null) {
             tid = bundle.getString("tid");

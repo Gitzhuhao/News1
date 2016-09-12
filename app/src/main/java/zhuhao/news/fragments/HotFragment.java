@@ -12,7 +12,7 @@ public class HotFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-//        tvTitle.setText("搜索");
+        showSuccessPage(null);
     }
 
     @Override
@@ -27,6 +27,6 @@ public class HotFragment extends BaseFragment {
 
     @Override
     protected int getRealLayout() {
-        return R.layout.layout_news;
+        return R.layout.layout_hot;
     }
 }

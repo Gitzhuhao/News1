@@ -16,7 +16,7 @@
     <color name="default_line_indicator_unselected_color">#FFBBBBBB</color>
     <color name="default_title_indicator_footer_color">#FF33B5E5</color>
     <color name="default_title_indicator_selected_color">#FFFFFFFF</color>
-    <color name="default_title_indicator_text_color">#BBFFFFFF</color>
+    <color name="default_title_indicator_text_color">#9B9B9B</color>
     <color name="default_underline_indicator_selected_color">#FF33B5E5</color>
     <color name="vpi__background_holo_dark">#ff000000</color>
     <color name="vpi__background_holo_light">#fff3f3f3</color>
